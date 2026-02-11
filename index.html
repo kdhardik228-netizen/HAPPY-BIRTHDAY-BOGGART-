@@ -158,6 +158,14 @@ function checkAnswer(choice) {
     if (choice === 4) {
         document.getElementById("quiz-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
+      const music = document.getElementById("bg-music");
+music.currentTime = 0;
+music.play();
+
+setTimeout(() => {
+  music.pause();
+}, 60000);
+
 confetti({
   particleCount: 200,
   spread: 100,
@@ -178,6 +186,10 @@ confetti({
     }
 }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<audio id="bg-music">
+  <source src="WhatMakesYouBeautiful.mp3" type="audio/mpeg">
+</audio>
+
 </body>
 </html>
