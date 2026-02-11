@@ -158,6 +158,11 @@ function checkAnswer(choice) {
     if (choice === 4) {
         document.getElementById("quiz-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
+confetti({
+  particleCount: 200,
+  spread: 100,
+  origin: { y: 0.6 }
+});
 
         document.body.classList.add("shake");
         setTimeout(() => {
@@ -173,6 +178,6 @@ function checkAnswer(choice) {
     }
 }
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
