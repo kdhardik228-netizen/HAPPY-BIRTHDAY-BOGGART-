@@ -32,11 +32,56 @@ h1 {
 
 audio {
   margin-top: 10px;
+}#quiz-screen {
+  text-align: center;
+  margin-top: 120px;
 }
+
+#quiz-screen button {
+  display: block;
+  margin: 15px auto;
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#wrong-msg {
+  color: red;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.shake {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
 </style>
 </head>
 
 <body>
+<div id="quiz-screen">
+    <h2>Before entering... answer this 😏</h2>
+    <p>How fat is Fool?</p>
+
+    <button onclick="checkAnswer(1)">Not much</button>
+    <button onclick="checkAnswer(2)">Thoda sa</button>
+    <button onclick="checkAnswer(3)">Very fat</button>
+    <button onclick="checkAnswer(4)">Godzilla 🦖</button>
+
+    <div id="wrong-msg"></div>
+</div>
+
+<div id="main-content" style="display:none;">
 
 <h1>Happy Birthday Boggart 🎂✨</h1>
 <p>Forever our 1D girl 💙</p>
@@ -106,6 +151,28 @@ audio {
 
 
 </div>
+</div>
+
+<script>
+function checkAnswer(choice) {
+    if (choice === 4) {
+        document.getElementById("quiz-screen").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+
+        document.body.classList.add("shake");
+        setTimeout(() => {
+            document.body.classList.remove("shake");
+        }, 500);
+    } else {
+        const msg = document.getElementById("wrong-msg");
+        msg.innerHTML = "Wrong answer 💀 Try again.";
+        msg.classList.add("shake");
+        setTimeout(() => {
+            msg.classList.remove("shake");
+        }, 500);
+    }
+}
+</script>
 
 </body>
 </html>
